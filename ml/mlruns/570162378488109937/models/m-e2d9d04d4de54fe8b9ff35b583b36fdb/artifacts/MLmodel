@@ -1,0 +1,22 @@
+artifact_path: file:///Users/ozlem.engez/go/realtime-feature-store/ml/mlruns/570162378488109937/models/m-e2d9d04d4de54fe8b9ff35b583b36fdb/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.6
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.0
+mlflow_version: 3.1.0
+model_id: m-e2d9d04d4de54fe8b9ff35b583b36fdb
+model_size_bytes: 53282
+model_uuid: m-e2d9d04d4de54fe8b9ff35b583b36fdb
+prompts: null
+run_id: c68fedeb99b14c1093e11db0f3885082
+utc_time_created: '2025-06-22 12:52:47.800599'

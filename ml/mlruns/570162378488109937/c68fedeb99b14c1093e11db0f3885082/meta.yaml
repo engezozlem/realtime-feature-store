@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/ozlem.engez/go/realtime-feature-store/ml/mlruns/570162378488109937/c68fedeb99b14c1093e11db0f3885082/artifacts
+end_time: 1750596770318
+entry_point_name: ''
+experiment_id: '570162378488109937'
+lifecycle_stage: active
+run_id: c68fedeb99b14c1093e11db0f3885082
+run_name: monumental-ape-578
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750596767700
+status: 3
+tags: []
+user_id: ozlem.engez

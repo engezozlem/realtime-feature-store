@@ -1,0 +1,10 @@
+artifact_location: file:///Users/ozlem.engez/go/realtime-feature-store/ml/mlruns/570162378488109937/models/m-e2d9d04d4de54fe8b9ff35b583b36fdb/artifacts
+creation_timestamp: 1750596767785
+experiment_id: '570162378488109937'
+last_updated_timestamp: 1750596770309
+model_id: m-e2d9d04d4de54fe8b9ff35b583b36fdb
+model_type: null
+name: model
+source_run_id: c68fedeb99b14c1093e11db0f3885082
+status: 2
+status_message: null
