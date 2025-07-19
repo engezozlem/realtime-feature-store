@@ -3,7 +3,7 @@ import redis
 
 r = redis.Redis(host="localhost", port=6379, decode_responses=True)
 
-with open("ml/sample_users.csv", newline="") as csvfile:
+with open("./sample_users.csv", newline="") as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         entity_id = row.pop("entity_id")

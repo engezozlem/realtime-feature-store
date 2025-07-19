@@ -76,6 +76,21 @@ You should see:
 }
 ```
 
+``` bash
+cd ml
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+for test
+python ingestor.py
+4. 🧠 Jupyter Lab (Model Eğitimi için)
+
+
+jupyter lab
+
+
 # Roadmap
 
 1. [X] Go API + Redis integration
