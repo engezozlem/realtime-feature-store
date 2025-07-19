@@ -1,72 +1,63 @@
-# Realtime Feature Store
+# 🚀 Realtime Feature Store
 
-A polyglot, real-time feature store system designed for ML systems that require low-latency, consistent feature access
-across online and offline contexts.
-
-## Overview
-
-This project demonstrates how to build a production-grade feature store combining:
-
-- **Go** → Fast, stateless HTTP API server
-- **Redis** → Low-latency key-value feature storage
-- **Python** → Model training, feature logging, MLflow integration (next step)
-- **Spark / Flink** → Batch and streaming ETL jobs (future phase)
+A cross-language, real-time machine learning feature store using **Python**, **Go**, **Redis**, and **MLflow** — built for learning, experimenting, and scaling real-time ML systems from scratch.
 
 ---
 
-## Components
+## 🚀 Getting Started
 
-| Folder      | Language | Description                                        |
-|-------------|----------|----------------------------------------------------|
-| `api/`      | Go       | HTTP endpoint handlers                             |
-| `store/`    | Go       | Redis client and feature data access layer         |
-| `infra/`    | Docker   | Local dev environment (`docker-compose.yml`)       |
-| `ml/`       | Python   | ML notebooks and tracking setup (MLflow)           |
-| `ingestor/` | Py/Scala | Future batch/streaming feature ingestion code      |
-| `docs/`     | Markdown | Architecture information and project documentation |
-| `README.md` | —        | This file                                          |
-
----
-
-## Getting Started
-
-### 1. Clone and enter project
+### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:engezozlem/realtime-feature-store.git
+git clone https://github.com/engezozlem/realtime-feature-store.git
 cd realtime-feature-store
 ```
 
-### 2. Start Redis locally
+---
 
-``` bash
-docker-compose -f infra/docker-compose.yml up -d
+### 2. Start Docker Services
+
+Redis & MLflow UI:
+
+```bash
+docker-compose up -d
 ```
 
-### 3. Run the Go API server
+- Redis: `localhost:6379`
+- MLflow UI: `http://localhost:5000`
 
-``` bash
-go mod tidy
+---
+
+### 3. Set Up Python Environment (for ingestion)
+
+```bash
+cd ml
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python ingestor.py
+```
+
+> This writes feature data (from `sample_users.csv`) into Redis using `HSET`.
+
+---
+
+### 4. Start Go Feature API
+
+```bash
+cd ../
 go run main.go
 ```
 
-### 4. Insert sample feature data
+Then test it:
 
-``` bash
-docker ps # find the Redis container name (usually infra-redis-1)
-docker exec -it infra-redis-1 redis-cli
-HSET 123 user_age 42 country "TR"
-```
-
-### 5. Test the feature API
-
-``` http request
+```bash
 curl http://localhost:8080/features/123
 ```
 
-You should see:
+Expected output:
 
-``` json
+```json
 {
   "entity_id": "123",
   "features": {
@@ -76,28 +67,22 @@ You should see:
 }
 ```
 
-``` bash
-cd ml
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
+## 🔧 Technologies
 
-for test
-python ingestor.py
-4. 🧠 Jupyter Lab (Model Eğitimi için)
+- Python 3.10
+- Go 1.21+
+- Redis 6/7
+- MLflow 2.x
+- Docker
 
+---
 
-jupyter lab
+## 🧠 What’s Next?
 
+- TTL support for feature freshness
+- Streaming ingestion (Kafka/Flink or simulated)
+- Real-time model serving (FastAPI or BentoML)
+- Observability with Prometheus + Grafana
+- CI setup with GitHub Actions
 
-# Roadmap
-
-1. [X] Go API + Redis integration
-2. [X] Basic feature retrieval with fallback
-3. [ ] ML pipeline + MLflow integration (ml/)
-4. [ ] Spark / Flink streaming ingestion pipeline (ingestor/)
-5. [ ] Feature consistency validator
-6. [ ] Drift detection tooling
-7. [ ] Optional LLM-assisted retraining triggers
-
+---
